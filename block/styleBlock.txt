@@ -1,0 +1,7 @@
+.block1 {
+width:100px;
+height:200px;
+float:left;
+margin: 1%;
+background-color: #3366CC;
+}

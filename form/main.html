@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+ 	<link href="cssForm.css" rel="stylesheet">
+</head>
+<body>
+  <form name="Form" onsubmit="return validateForm()" >
+    <div>
+      <label for="name">Name</label>
+      <input class="erName" type="text" minlength="3" name="name" required>
+    </div>
+    <div class="radio">
+      <span>Specify your gender</span>
+	<select id="selectID">
+	<option value="0"></option>
+	<option value=Ф1Ф>Male</option>
+	<option value=Ф2Ф>Female</option>
+	</select>
+        </div>
+    <div 
+      <span>Record book number</span>
+      <input type="text" minlength="12" maxlength="12" pattern="^[ 0-9]+$" name="number" required>
+    </div>
+    <div>
+      <label for="date">Date of Birth</label>
+      <input type="date" name="Date" required>
+    </div>
+      <span>‘ото</span>
+      
+      <p><input type="file" class="erPic" name="photo" multiple accept="image/*,image/jpeg"></p>
+    </div>
+    <div>
+      <label for="pass">Password</label>
+      <input type="password" minlength="8" name="Password" required>
+    </div>
+	<button type="submit">Send</button>
+    <button type="reset">Clear</button> 
+</form> 
+</body>
+<script>
+function validateForm() {
+ 	var error = "";
+ 	var input = document.forms["Form"]["photo"];
+ 	var text = document.forms["Form"]["name"];
+ 	if (/\d/.test(document.forms["Form"]["name"].value)) {
+         error += "Incorrect data\n";
+ 		text.style.background = 'red';
+     }
+ 	if (input.files[0].size > 1038336) {
+ 		error += "Image more 1mb\n";
+ 		input.style.background = 'red';
+ 	}
+ 	if (error != "") {
+ 		alert(error);
+ 		return false;
+ 	} else {
+ 	    loadDoc();
+ 		return true;
+ 	}
+ 	
+ }
+function loadDoc() {
+    var xhttp = new XMLHttpRequest();
+ 	//xhttp.open('GET', '1.html', true);
+     xhttp.onreadystatechange = function() {
+         if (this.readyState == 4 && this.status == 200) {
+             alert("Data saved successfully")
+        } else {
+ 			alert("Data not saved")
+ 	   }
+     };
+     xhttp.send(document.forms["Form"].data); 
+ } 
+ </script
+    </html>
